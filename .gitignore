@@ -1,5 +1,1 @@
-node_modules/
-dist/
-.tmp
-logs/
-src/Contexts/Lab/Courses/infrastructure/courses.*
+node_modules
