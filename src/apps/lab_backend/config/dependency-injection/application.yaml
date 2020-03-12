@@ -1,0 +1,24 @@
+services:
+  Lab.Auth.AuthRepository:
+    class: ../../../../Contexts/Lab/Auth/infrastructure/MongoDBAuthRepository
+    arguments: []
+
+  Lab.Auth.AuthCommand:
+    class: ../../../../Contexts/Lab/Auth/application/AuthCommand
+    arguments: ["@Lab.Auth.AuthRepository"]
+
+  Lab.Auth.AuthQuery:
+    class: ../../../../Contexts/Lab/Auth/application/AuthQuery
+    arguments: ["@Lab.Auth.AuthRepository"]
+
+  Lab.shared.Logger:
+    class: ../../../../Contexts/Shared/infrastructure/WinstonLogger
+    arguments: []
+
+  Apps.Lab_backend.controllers.AuthPutController:
+    class: ../../controllers/AuthPutController
+    arguments: ["@Lab.Auth.AuthCommand"]
+
+  Apps.Lab_backend.controllers.StatusGetController:
+    class: ../../controllers/StatusGetController
+    arguments: ["@Lab.Auth.AuthQuery"]
