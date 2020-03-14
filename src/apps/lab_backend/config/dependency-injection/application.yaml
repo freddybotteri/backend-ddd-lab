@@ -3,12 +3,12 @@ services:
     class: ../../../../Contexts/Lab/Auth/infrastructure/MongoDBAuthRepository
     arguments: []
 
-  Lab.Auth.AuthCommand:
-    class: ../../../../Contexts/Lab/Auth/application/AuthCommand
+  Lab.Auth.AuthCommandCreator:
+    class: ../../../../Contexts/Lab/Auth/application/AuthCommandCreator
     arguments: ["@Lab.Auth.AuthRepository"]
 
-  Lab.Auth.AuthQuery:
-    class: ../../../../Contexts/Lab/Auth/application/AuthQuery
+  Lab.Auth.AuthQueryCreator:
+    class: ../../../../Contexts/Lab/Auth/application/AuthQueryCreator
     arguments: ["@Lab.Auth.AuthRepository"]
 
   Lab.shared.Logger:
@@ -17,8 +17,8 @@ services:
 
   Apps.Lab_backend.controllers.AuthPutController:
     class: ../../controllers/AuthPutController
-    arguments: ["@Lab.Auth.AuthCommand"]
+    arguments: ["@Lab.Auth.AuthCommandCreator"]
 
   Apps.Lab_backend.controllers.StatusGetController:
     class: ../../controllers/StatusGetController
-    arguments: ["@Lab.Auth.AuthQuery"]
+    arguments: ["@Lab.Auth.AuthQueryCreator"]

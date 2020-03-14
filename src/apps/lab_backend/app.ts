@@ -9,16 +9,7 @@ const app: express.Express = express();
 
 const allowedOrigins = ['http://localhost:3000']
 
-app.use(cors({
-  credentials: true,
-  origin: (origin, callback) => {
-    if (allowedOrigins.includes(origin)) {
-      callback(null, true) 
-    } else {
-      callback(new Error(`Origin: ${origin} is now allowed`))
-    }
-  }
-}))
+app.use(cors())
 
 app.set('port', process.env.PORT || 3001);
 

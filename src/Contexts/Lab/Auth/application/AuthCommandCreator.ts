@@ -1,7 +1,7 @@
 import AuthRepository from '../domain/AuthRepository';
 import Auth from '../domain/Auth';
 
-export default class AuthCommand {
+export default class AuthCommandCreator {
   private repository: AuthRepository;
 
   constructor(repository: AuthRepository) {
