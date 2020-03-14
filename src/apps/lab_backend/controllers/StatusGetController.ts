@@ -1,16 +1,16 @@
 import { Request, Response } from 'express';
 import httpStatus from 'http-status';
 import Controller from './Controller';
-import AuthQuery from '../../../Contexts/Lab/Auth/application/AuthQuery';
+import AuthQueryCreator from '../../../Contexts/Lab/Auth/application/AuthQueryCreator';
 
 export default class StatusGetController implements Controller {
 	
-		constructor(private authQuery: AuthQuery) {}
+		constructor(private authQueryCreator: AuthQueryCreator) {}
 		async run(req: Request, res: Response) {
 				let response: string =  '';
 				try {
 
-					response = await this.authQuery.run();    
+					response = await this.authQueryCreator.run();    
 				} catch (e) {
 					res.status(httpStatus.INTERNAL_SERVER_ERROR).json(e);
 				}
@@ -23,7 +23,7 @@ export default class StatusGetController implements Controller {
 				const password: string = req.params.password;
 				let response: string =  '';
 				try {
-					response = await this.authQuery.signin(email,password);   
+					response = await this.authQueryCreator.signin(email,password);   
 				} catch (e) {
 					
 					res.status(httpStatus.INTERNAL_SERVER_ERROR).json(e);

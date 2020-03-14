@@ -1,11 +1,11 @@
 import { Request, Response } from 'express';
-import AuthCommand from '../../../Contexts/Lab/Auth/application/AuthCommand';
+import AuthCommandCreator from '../../../Contexts/Lab/Auth/application/AuthCommandCreator';
 import httpStatus from 'http-status';
 import Controller from './Controller';
 import AuthAlreadyExists from '../../../Contexts/Lab/Auth/domain/AuthAlreadyExists';
 
 export class AuthPutController implements Controller {
-  constructor(private authCommand: AuthCommand) {}
+  constructor(private authCommandCreator: AuthCommandCreator) {}
 
   async run(req: Request, res: Response) {
     const name: string = req.body.name;
@@ -14,7 +14,7 @@ export class AuthPutController implements Controller {
     let response: string =  '';
     console.log(req.body);
     try {
-      response = await this.authCommand.run(name, email,password);
+      response = await this.authCommandCreator.run(name, email,password);
     } catch (e) {
       if (e instanceof AuthAlreadyExists) {
         res.status(httpStatus.BAD_REQUEST).json({ auth: false, token });
