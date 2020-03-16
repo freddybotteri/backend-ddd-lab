@@ -7,8 +7,8 @@ services:
     class: ../../../../Contexts/Lab/Auth/application/AuthCommandCreator
     arguments: ["@Lab.Auth.AuthRepository"]
 
-  Lab.Auth.AuthQueryCreator:
-    class: ../../../../Contexts/Lab/Auth/application/AuthQueryCreator
+  Lab.Auth.AuthQueryFinder:
+    class: ../../../../Contexts/Lab/Auth/application/AuthQueryFinder
     arguments: ["@Lab.Auth.AuthRepository"]
 
   Lab.shared.Logger:
@@ -21,4 +21,4 @@ services:
 
   Apps.Lab_backend.controllers.StatusGetController:
     class: ../../controllers/StatusGetController
-    arguments: ["@Lab.Auth.AuthQueryCreator"]
+    arguments: ["@Lab.Auth.AuthQueryFinder"]

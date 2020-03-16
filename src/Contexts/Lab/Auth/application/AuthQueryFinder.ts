@@ -1,7 +1,6 @@
 import AuthRepository from '../domain/AuthRepository';
-import Auth from '../domain/Auth';
 
-export default class AuthQueryCreator {
+export default class AuthQueryFinder {
   private repository: AuthRepository;
 
   constructor(repository: AuthRepository) {
